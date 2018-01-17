@@ -1,0 +1,42 @@
+$blur_level: 35px;
+mat-toolbar {
+    position: fixed;
+    z-index: 10;
+}
+
+.fill-remaining-space {
+    flex: 1 1 auto;
+}
+
+.menu span {
+    margin: 0 10px;
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding-top: 60px;
+}
+
+.background {
+    position: fixed;
+    left: -30px;
+    top: -30px;
+    z-index: -1;
+    width: 110%;
+    height: 110%;
+    background-image: url('https://images.unsplash.com/photo-1494625927555-6ec4433b1571');
+    background-size: cover;
+    -webkit-filter: blur($blur_level);
+    -moz-filter: blur($blur_level);
+    -o-filter: blur($blur_level);
+    -ms-filter: blur($blur_level);
+    filter: blur($blur_level);
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}

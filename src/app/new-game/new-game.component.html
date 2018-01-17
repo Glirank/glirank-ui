@@ -1,0 +1,35 @@
+<form [formGroup]="formGroup" (ngSubmit)="save()">
+    <mat-card class="game-form">
+        <mat-card-title>Game Result</mat-card-title>
+        <mat-card-content>
+            <div class="row">
+                <span class="label">Team 1:</span>
+                <mat-form-field><input matInput placeholder="Player 1" formControlName="team1player1"></mat-form-field>
+                <mat-form-field><input matInput placeholder="Player 2" formControlName="team1player2"></mat-form-field>
+            </div>
+            <div class="row">
+                <span class="label">Team 2:</span>
+                <mat-form-field><input matInput placeholder="Player 1" formControlName="team2player1"></mat-form-field>
+                <mat-form-field><input matInput placeholder="Player 2" formControlName="team2player2"></mat-form-field>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="scores">
+        <mat-card-title>Scores</mat-card-title>
+        <mat-card-content>
+            <div class="score-row" *ngFor="let gameControl of getGamesForm().controls; let i=index">
+                <div class="remove-btn"><button type="button" mat-icon-button color="primary" (click)="removeGame(i)"><mat-icon>clear</mat-icon></button></div>
+                <mat-form-field><input matInput placeholder="Score game {{i+1}} team 1" [formControl]="gameControl.get('scoreTeam1')"></mat-form-field>
+                <mat-form-field><input matInput placeholder="Score game {{i+1}} team 2" [formControl]="gameControl.get('scoreTeam2')"></mat-form-field>
+            </div>
+
+            <div class="add-more-button">
+                <button type="button" mat-fab color="primary" (click)="addNewGame()"><mat-icon>add_more</mat-icon></button>
+            </div>
+        </mat-card-content>
+        <mat-card-actions align="end" class="actions">
+            <button type="submit" mat-raised-button color="primary">Save</button>
+        </mat-card-actions>
+    </mat-card>
+</form>
